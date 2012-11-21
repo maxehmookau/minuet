@@ -34,6 +34,8 @@
 // Initializes object with a letter and an accidental.
 // Implementation will assume octive 4 unless specified otherwise.
 - (id)initWithLetter:(NSString *)aLetter accidental:(int)anAccidental octave:(int)anOctave;
+- (NSString *)absoluteNoteName;
+- (NSString *)accidentalName;
 
 @property (nonatomic, retain) NSString *letter;
 @property (nonatomic) int accidental;

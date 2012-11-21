@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Note.h"
 
 int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
         
-        // insert code here...
-        NSLog(@"Hello, World!");
+        Note *middleC = [[Note alloc] initWithLetter:@"C" accidental:0 octave:4];
+        NSLog(@"%@", [middleC absoluteNoteName]);
         
     }
     return 0;

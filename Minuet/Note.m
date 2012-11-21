@@ -12,12 +12,44 @@
 @synthesize  letter, accidental, octave, midiNote, frequency;
 
 - (id)initWithLetter:(NSString *)aLetter accidental:(int)anAccidental octave:(int)anOctave {
-    NSArray *permittedLetters = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", nil];
-    if([permittedLetters containsObject:aLetter]) {
-        letter = aLetter;
+    
+    letter = aLetter;
+    accidental = anAccidental;
+    
+    // Set octave as 4 if not set directly
+    if(anOctave) {
+        octave = anOctave;
+    }else{
+        octave = 4;
     }
     
     return [super init];
+}
+
+// Returns the absolute reference to the note.
+// Middle C = C4
+// Returns as an NSString
+- (NSString *)absoluteNoteName
+{
+    return [NSString stringWithFormat:@"%@%@%i", letter, [self accidentalName],  octave];
+}
+
+// Returns the symbol of the accidental as an NSString
+-(NSString *)accidentalName {
+    switch (accidental) {
+        case 0:
+            return @"";
+            break;
+        case 1:
+            return @"b";
+            break;
+        case 2:
+            return @"#";
+            break;
+        default:
+            break;
+    }
+    return nil;
 }
 
 @end
