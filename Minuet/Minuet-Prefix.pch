@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Minuet' target in the 'Minuet' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
