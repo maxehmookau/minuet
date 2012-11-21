@@ -31,6 +31,7 @@
 		500A3FDA165D734E00F9C75F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		500A3FDD165D734E00F9C75F /* Minuet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Minuet-Prefix.pch"; sourceTree = "<group>"; };
 		500A3FDE165D734E00F9C75F /* Minuet.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Minuet.1; sourceTree = "<group>"; };
+		500A3FE5165D73E300F9C75F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 		500A3FC8165D734E00F9C75F = {
 			isa = PBXGroup;
 			children = (
+				500A3FE5165D73E300F9C75F /* README.md */,
 				500A3FD9165D734E00F9C75F /* Minuet */,
 				500A3FD6165D734E00F9C75F /* Frameworks */,
 				500A3FD4165D734E00F9C75F /* Products */,
