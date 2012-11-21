@@ -54,19 +54,36 @@
 
 - (Note *)semitoneAbove
 {
-    // Treat it differently if it's at the top of the octave
+    // Deal with special cases.
+    // Firstly, B Natural at the top of the octave.
+    // Secondly, E Natural - The only note to pass to another
+    //   natural note up a semitone.
+    // The rest all follow a pattern. Hopefully...
     if([letter isEqualToString:@"B"] && accidental == 0) {
         NSString *newLetter = @"C";
         int newOctave = octave + 1;
         Note *newNote = [[Note alloc] initWithLetter:newLetter accidental:0 octave:newOctave];
         return newNote;
+    }else if(accidental == 0 && [letter isEqualToString:@"E"]) {
+        Note *newNote = [[Note alloc] initWithLetter:@"F" accidental:0 octave:octave];
+        return newNote;
+    }else if(accidental == 2 && [letter isEqualToString:@"B"]) {
+        Note *newNote = [[Note alloc] initWithLetter:@"C" accidental:2 octave:octave +1];
+        return newNote;
     }else{
-        if(accidental == 0 && [letter isEqualToString:@"E"]) {
-            Note *newNote = [[Note alloc] initWithLetter:@"F" accidental:0 octave:octave];
+        if (accidental == 1) {
+            Note *newNote = [[Note alloc] initWithLetter:letter accidental:0 octave:octave];
+            return newNote;
+        }else if(accidental == 2) {
+            NSString *newNoteLetter = [[Note notes]objectAtIndex:[[Note notes] indexOfObject:letter]+1];
+            Note *newNote = [[Note alloc] initWithLetter:newNoteLetter accidental:0 octave:octave];
+            return newNote;
+        }else{
+            NSString *newNoteLetter = [[Note notes]objectAtIndex:[[Note notes] indexOfObject:letter]+1];
+            Note *newNote = [[Note alloc] initWithLetter:newNoteLetter accidental:1 octave:octave];
             return newNote;
         }
     }
-    return nil;
 }
 
 #pragma mark - Class Methods
