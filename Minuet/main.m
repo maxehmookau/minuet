@@ -14,8 +14,9 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
-        Note *middleC = [[Note alloc] initWithLetter:@"C" accidental:0 octave:4];
-        NSLog(@"%@", [middleC absoluteNoteName]);
+        Note *middleB = [[Note alloc] initWithLetter:@"B" accidental:0 octave:7];
+        NSLog(@"%@", [middleB absoluteNoteName]);
+        [middleB semitoneAbove];
         
     }
     return 0;

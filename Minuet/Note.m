@@ -35,7 +35,7 @@
 }
 
 // Returns the symbol of the accidental as an NSString
--(NSString *)accidentalName {
+- (NSString *)accidentalName {
     switch (accidental) {
         case 0:
             return @"";
@@ -50,6 +50,26 @@
             break;
     }
     return nil;
+}
+
+- (Note *)semitoneAbove
+{
+    if([letter isEqualToString:@"B"] && accidental == 0) {
+        NSString *newLetter = @"C";
+        int newOctave = octave + 1;
+        Note *newNote = [[Note alloc] initWithLetter:newLetter accidental:0 octave:newOctave];
+        NSLog(@"%@", [newNote absoluteNoteName]);
+        return newNote;
+    }else{
+        NSLog(@"Not sure yet");
+    }
+    return nil;
+}
+
+#pragma mark - Class Methods
++ (NSArray *)notes {
+    NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C", @"D", @"E", @"F", @"G", @"A", @"B", nil];
+    return noteNames;
 }
 
 @end
