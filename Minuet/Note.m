@@ -54,14 +54,17 @@
 
 - (Note *)semitoneAbove
 {
+    // Treat it differently if it's at the top of the octave
     if([letter isEqualToString:@"B"] && accidental == 0) {
         NSString *newLetter = @"C";
         int newOctave = octave + 1;
         Note *newNote = [[Note alloc] initWithLetter:newLetter accidental:0 octave:newOctave];
-        NSLog(@"%@", [newNote absoluteNoteName]);
         return newNote;
     }else{
-        NSLog(@"Not sure yet");
+        if(accidental == 0 && [letter isEqualToString:@"E"]) {
+            Note *newNote = [[Note alloc] initWithLetter:@"F" accidental:0 octave:octave];
+            return newNote;
+        }
     }
     return nil;
 }
