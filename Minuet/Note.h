@@ -18,5 +18,27 @@
     // 1 = Flat
     // 2 = Sharp
     int accidental;
+    
+    // Octave number (MIDI style)
+    // Middle C = 4
+    int octave;
+    
+    // MIDI note representation
+    // 21 - 108
+    int midiNote;
+    
+    // Frequency to three decimal places (maximum)
+    float frequency;
 }
+
+// Initializes object with a letter and an accidental.
+// Implementation will assume octive 4 unless specified otherwise.
+- (id)initWithLetter:(NSString *)aLetter accidental:(int)anAccidental octave:(int)anOctave;
+
+@property (nonatomic, retain) NSString *letter;
+@property (nonatomic) int accidental;
+@property (nonatomic) int octave;
+@property (nonatomic) int midiNote;
+@property (nonatomic) float frequency;
+
 @end
