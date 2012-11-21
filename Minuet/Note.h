@@ -38,6 +38,7 @@
 - (NSString *)absoluteNoteName;
 - (NSString *)accidentalName;
 - (Note *)semitoneAbove;
+- (NSArray *)chromaticScale;
 
 @property (nonatomic, retain) NSString *letter;
 @property (nonatomic) int accidental;

@@ -58,6 +58,8 @@
     // Firstly, B Natural at the top of the octave.
     // Secondly, E Natural - The only note to pass to another
     //   natural note up a semitone.
+    // Thirdly B sharp. Actually a C. Always leads to the C# of the
+    //   octave number above.
     // The rest all follow a pattern. Hopefully...
     if([letter isEqualToString:@"B"] && accidental == 0) {
         NSString *newLetter = @"C";
@@ -79,11 +81,28 @@
             Note *newNote = [[Note alloc] initWithLetter:newNoteLetter accidental:0 octave:octave];
             return newNote;
         }else{
+            // Always flat. Needs to know when to return sharps.
+            // Depends on context?
             NSString *newNoteLetter = [[Note notes]objectAtIndex:[[Note notes] indexOfObject:letter]+1];
             Note *newNote = [[Note alloc] initWithLetter:newNoteLetter accidental:1 octave:octave];
             return newNote;
         }
     }
+}
+
+- (NSArray *)chromaticScale {
+    NSMutableArray *chromaticScale = [[NSMutableArray alloc] init];
+    Note *currentNote = self;
+    [chromaticScale addObject:self];
+    for(int x = 0; x < 11; x++)
+    {
+        currentNote = [currentNote semitoneAbove];
+        [chromaticScale addObject:currentNote];
+    }
+    for (Note *object in chromaticScale) {
+        NSLog(@"%@", [object absoluteNoteName]);
+    }
+    return chromaticScale;
 }
 
 #pragma mark - Class Methods
